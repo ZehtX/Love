@@ -1,0 +1,284 @@
+/* =========================================
+   1. Importación de Fuentes (Google Fonts)
+   ========================================= */
+/* Usaremos 'Playfair Display' para títulos (elegante) 
+   y 'Poppins' para texto normal (moderno y limpio) */
+   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Poppins:wght@300;400;600&display=swap');
+
+   /* =========================================
+      2. Variables de Color y Reset
+      ========================================= */
+   :root {
+       --bg-gradient: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%); /* Fondo suave */
+       --primary-romantic: #ff85a1; /* Rosa suave principal */
+       --secondary-romantic: #ff4d6d; /* Rosa más intenso para acentos */
+       --text-dark: #4a4a4a;
+       --text-light: #fff;
+       --gold-accent: #d4af37; /* Dorado para detalles */
+       --glass-bg: rgba(255, 255, 255, 0.5); /* Efecto cristal */
+   }
+   
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+   }
+   
+   /* =========================================
+      3. Estilo del Cuerpo (Fondo Animated)
+      ========================================= */
+   body {
+       font-family: 'Poppins', sans-serif;
+       background: var(--bg-gradient);
+       color: var(--text-dark);
+       line-height: 1.8;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       min-height: 100vh;
+       padding: 20px;
+       overflow-x: hidden; /* Evita scroll horizontal por animaciones */
+       position: relative;
+   }
+   
+   /* Efecto de fondo sutil (corazones flotantes opcionales con CSS puro) */
+   body::before {
+       content: '♥';
+       position: absolute;
+       font-size: 20rem;
+       color: rgba(255, 133, 161, 0.05);
+       top: -10%;
+       right: -10%;
+       transform: rotate(20deg);
+       z-index: 0;
+   }
+   
+   /* =========================================
+      4. Contenedor Principal (Glassmorphism)
+      ========================================= */
+   /* Este estilo envuelve todo el contenido del body para que se vea Pro */
+   body > * {
+       z-index: 1; /* Pone el contenido sobre el fondo */
+   }
+   
+   /* Crear un contenedor visual si no existe en el HTML es difícil con puro CSS, 
+      así que aplicaremos el estilo directamente a los elementos del body, 
+      pero lo ideal sería envolver todo el HTML en un <div class="container"> */
+   
+   /* Simularemos el contenedor envolviendo todo el contenido en una tarjeta visual */
+   body {
+       display: flex;
+       flex-direction: column;
+   }
+   
+   /* Estilo para simular una tarjeta "Glass" alrededor de todo */
+   html {
+       background: var(--bg-gradient);
+   }
+   
+   body::after {
+       content: '';
+       position: fixed;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 90%;
+       max-width: 700px;
+       height: 90%;
+       max-height: 80vh;
+       background: var(--glass-bg);
+       backdrop-filter: blur(10px);
+       border-radius: 30px;
+       border: 1px solid rgba(255, 255, 255, 0.3);
+       box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+       z-index: -1; /* Detrás del texto */
+       padding: 40px;
+   }
+   
+   /* =========================================
+      5. Estilos de Tipografía y Elementos
+      ========================================= */
+   
+   /* Título Principal <h1> */
+   h1 {
+       font-family: 'Playfair Display', serif;
+       font-weight: 700;
+       color: var(--secondary-romantic);
+       text-align: center;
+       font-size: 2.5rem;
+       margin-bottom: 10px;
+       text-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+       animation: fadeInDown 1s ease-out;
+   }
+   
+   /* Línea Divisoria <hr> */
+   hr {
+       border: 0;
+       height: 2px;
+       background: linear-gradient(to right, transparent, var(--primary-romantic), transparent);
+       width: 60%;
+       margin: 0 auto 25px auto;
+       animation: scaleIn 1.2s ease-in-out;
+   }
+   
+   /* Párrafos <p> */
+   p {
+       font-size: 1.1rem;
+       font-weight: 300;
+       margin-bottom: 20px;
+       text-align: center;
+       max-width: 600px;
+       margin-left: auto;
+       margin-right: auto;
+       animation: fadeIn 1.5s ease-out;
+   }
+   
+   /* Subtítulo <h2> */
+   h2 {
+       font-family: 'Playfair Display', serif;
+       font-style: italic;
+       font-weight: 400;
+       color: var(--primary-romantic);
+       text-align: center;
+       margin-top: 30px;
+       margin-bottom: 20px;
+       font-size: 1.8rem;
+       position: relative;
+       display: inline-block;
+       /* left: 50%;
+       transform: translateX(-50%); */
+   }
+   
+   h2::after {
+       content: ' ✨'; /* Detalle decorativo */
+       color: var(--gold-accent);
+   }
+   
+   /* Lista Desordenada <ul> */
+   ul {
+       list-style: none; /* Quitamos los puntos por defecto */
+       max-width: 500px;
+       margin: 0 auto 30px auto;
+       padding: 0 20px;
+   }
+   
+   /* Elementos de la Lista <li> */
+   li {
+       background: var(--glass-bg);
+       margin-bottom: 12px;
+       padding: 15px 20px;
+       border-radius: 15px;
+       border-left: 5px solid var(--primary-romantic);
+       box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+       transition: all 0.3s ease;
+       font-weight: 400;
+       display: flex;
+       align-items: center;
+       animation: fadeInUp 1s ease-out;
+       animation-fill-mode: both;
+   }
+   
+   /* Delay para que los <li> aparezcan uno por uno */
+   li:nth-child(1) { animation-delay: 0.2s; }
+   li:nth-child(2) { animation-delay: 0.4s; }
+   li:nth-child(3) { animation-delay: 0.6s; }
+   li:nth-child(4) { animation-delay: 0.8s; }
+   li:nth-child(5) { animation-delay: 1.0s; }
+   
+   /* Efecto Hover Pro en los <li> */
+   li:hover {
+       transform: translateY(-5px) scale(1.02);
+       box-shadow: 0 10px 20px rgba(255, 133, 161, 0.15);
+       border-left-color: var(--secondary-romantic);
+       background: rgba(255, 255, 255, 0.8);
+   }
+   
+   /* Añadir icono de corazón antes de cada <li> */
+   li::before {
+       content: '❤';
+       color: var(--primary-romantic);
+       margin-right: 15px;
+       font-size: 1.2rem;
+       transition: transform 0.3s ease;
+   }
+   
+   li:hover::before {
+       transform: scale(1.3);
+       color: var(--secondary-romantic);
+   }
+   
+   /* Espaciador <br> (Lo estilizamos para que de aire) */
+   br {
+       content: "";
+       display: block;
+       margin-top: 20px;
+   }
+   
+   /* El último párrafo (la petición) */
+   body > p:last-of-type {
+       font-weight: 600;
+       color: var(--secondary-romantic);
+       font-size: 1.2rem;
+       margin-top: 20px;
+       border-top: 1px solid rgba(255, 133, 161, 0.2);
+       padding-top: 20px;
+       animation: pulse 2s infinite; /* Animación de pulso */
+   }
+   
+   /* =========================================
+      6. Animaciones KEYFRAMES
+      ========================================= */
+   
+   @keyframes fadeIn {
+       from { opacity: 0; }
+       to { opacity: 1; }
+   }
+   
+   @keyframes fadeInDown {
+       from {
+           opacity: 0;
+           transform: translateY(-30px);
+       }
+       to {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+   
+   @keyframes fadeInUp {
+       from {
+           opacity: 0;
+           transform: translateY(30px);
+       }
+       to {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+   
+   @keyframes scaleIn {
+       from {
+           transform: scaleX(0);
+           opacity: 0;
+       }
+       to {
+           transform: scaleX(1);
+           opacity: 1;
+       }
+   }
+   
+   @keyframes pulse {
+       0% { transform: scale(1); }
+       50% { transform: scale(1.05); text-shadow: 0 0 10px rgba(255, 77, 109, 0.3); }
+       100% { transform: scale(1); }
+   }
+   
+   /* =========================================
+      7. Responsividad (Móviles)
+      ========================================= */
+   @media (max-width: 600px) {
+       h1 { font-size: 1.9rem; }
+       h2 { font-size: 1.5rem; }
+       body::after { width: 95%; padding: 20px; }
+       li { padding: 10px 15px; font-size: 0.95rem; }
+   }
